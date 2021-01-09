@@ -1,29 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './App.css';
-import Coin from './Coin';
-import CoinTest from './CoinTest';
+import Coin from './components/coin/Coin';
 
 function App() {
   const [coins, setCoins] = useState([]);
-  const [search, setSearch] = useState('');
 
   useEffect(() => {
     const dataloop = setInterval(() => {
       axios
         .get('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=10&page=1&sparkline=false')
-        .then(res => {
-          setCoins(res.data);
-        })
-        .catch(error => console.log(error));      
-    }, 100);
+        .then(currency => {setCoins(currency.data);})
+        .catch(error => console.log(error));
+    }, 1000);
 
     return () => clearInterval(dataloop);
   }, []);
-
-  const filteredCoins = coins.filter(coin =>
-    coin.name.toLowerCase().includes(search.toLowerCase())
-  );
 
   return (
     <div className='coin-app'>
@@ -37,9 +29,9 @@ function App() {
         <h1 className="crypto-price">Stock Price</h1>
       </div>
     </div>
-      {filteredCoins.map(coin => {
+      {coins.map(coin => {
         return (
-          <CoinTest
+          <Coin
             key={coin.id}
             name={coin.name}
             price={coin.current_price}
