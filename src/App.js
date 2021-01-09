@@ -3,18 +3,18 @@ import axios from 'axios';
 import './App.css';
 import Coin from './components/coin/Coin';
 
-function App() {
+export default function App() {
   const [coins, setCoins] = useState([]);
 
   useEffect(() => {
-    const dataloop = setInterval(() => {
+    const intervals = setInterval(() => {
       axios
         .get('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=10&page=1&sparkline=false')
         .then(currency => {setCoins(currency.data);})
         .catch(error => console.log(error));
     }, 1000);
 
-    return () => clearInterval(dataloop);
+    return () => clearInterval(intervals);
   }, []);
 
   return (
@@ -46,5 +46,3 @@ function App() {
     </div>
   );
 }
-
-export default App;
