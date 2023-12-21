@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './App.css';
-import Coin from './components/coin/Coin';
+import Coin from './components/Coin';
 
 export default function App() {
   const [coins, setCoins] = useState([]);
@@ -18,15 +18,15 @@ export default function App() {
   }, []);
 
   return (
-    <div className='coin-app'>
-    <h1 className='coin-text'>Cryptocurrency Market</h1>
-    <div className="title-row">
-      <div className="crypto">
-        <h1 className="crypto-name">Currency</h1>
-        <h1 className="crypto-symbol">Symbol</h1>
+    <div className='text-white flex flex-col items-center mt-[65px] pb-[100px]'>
+    <h1 className='text-[42px] text-center mb-[32px]'>Cryptocurrency Market</h1>
+    <div className="flex flex-row justify-center items-center w-[100%] h-[75px]">
+      <div className="flex items-center pr-[24px] min-w-[250px]">
+        <h1 className="text-[16px] w-[150px] pl-[150px] crypto-name">Currency</h1>
+        <h1 className="text-[16px] pl-[150px]">Symbol</h1>
       </div>
-      <div className="crypto-data">
-        <h1 className="crypto-price">Stock Price</h1>
+      <div className="text-right flex justify-between w-[300px]">
+        <h1 className="flex justify-center w-[150px]">Stock Price</h1>
       </div>
     </div>
       {coins.map(coin => {
