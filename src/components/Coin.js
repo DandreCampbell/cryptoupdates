@@ -5,9 +5,9 @@ import './Coin.css';
 const Coin = ({ name, price, symbol, image, priceChange }) => {
     return (
         <div>
-            <Container className="flex justify-center">
+            <Container className='flex justify-center'>
                 <div className='flex justify-center items-center'>
-                    <Row className="flex flex-row justify-center items-center h-[75px] coin-row">
+                    <Row className='flex flex-row justify-center items-center h-[75px] coin-row'>
                         <Col className='flex items-center min-w-[300px] pr-[24px]'>
                             <img src={image} alt='crypto' className='w-[30px] h-[30px] mr-[15px]' />
                             <h2 className='text-[16px] w-[150px]'>{name}</h2>
